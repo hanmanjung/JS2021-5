@@ -23,4 +23,4 @@ case 9:
 case 10:
 case 11:
     console.log("가을");
-    
+}
