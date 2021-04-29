@@ -66,11 +66,45 @@
 // console.log(Number(inputB));
 // console.log(Number(inputC));
 
-setTimeout(() => {
-  console.log("1초 경과!!!");
-}, 1000)
+// setTimeout(() => {
+//   console.log("1초 경과!!!");
+// }, 1000)
 
 
-setInterval(() => {
-  console.log("인터벌 1초 경과!!!");
-}, 1000)
+// let foo = setInterval(() => {
+//   console.log("인터벌 1초 경과!!!");
+// }, 1000)
+
+// setTimeout(() => {
+//   clearInterval(foo);
+// }, 3000)
+
+// let foo;
+// foo = 10;
+// foo = 20;
+// foo = "세번째";
+
+// console.log(foo);
+
+// let foo;
+// foo = () => {console.log("1st"); }
+// foo = () => {console.log("2nd"); }
+
+// foo();
+
+// var foo = () => { console.log("1st"); };
+// function foo() { console.log("2nd"); };
+
+// foo();
+
+let name = dong;
+foo = () => {
+  let name = "synn";
+  console.log(this.name);
+};
+
+// function () {
+//   console.log("this.name");
+// };
+
+// foo();

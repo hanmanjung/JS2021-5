@@ -2,6 +2,129 @@
 
 ## [04월 13일]
 > 오늘 배운 내용 요약  <br />
+객체 기본 <br>
+객체는 여러개의 자료형을 한 번에 저장하는 자료형입니다.<br>
+객체와 반복문<br>
+생성한 객체에 for in 반복문으로 반복을 적용할 수 있습니다.<br>
+속성과 메소드 <br>
+배열 내부에 있는 값 하나하나를 요소라고 합니다. 객체 내부에 있는 값 하나하나는 속성이라고 합니다.<br>
+생성자 함수와 프로토타입<br>
+현대 프로그래밍은 자료를 다루는 것이 목적, 현실의 객체를 모방해서 프로그래밍하는 '객체 지향 프로그래밍'의 이념으로 만든 프로그래밍 언어들이 주류<br>
+-생성자 함수<br>
+--'객체를 만드는 함수'<br>
+-프로토타입<br>
+--생성자 함수로 만든 객체는 프로토타입이라는 공간에 메소드를 지정해서 모든 객체가 공유하도록 만들수 있다.<br>
+> 여러줄 요약<br>
+-- 배열을 선언합니다.<br>
+let foo = {"사과", "배","바나나","딸기" }; <br>
+array[0] -> '사과'<br>
+array[1] -> '망고'<br>
+<br>
+--객체 선언<br>
+ let foo = { <br>
+ 제품명: "건조 망고", <br>
+ 유형: "당절임", <br>
+ 원산지: "필리핀" <br>
+ price: 1200 <br>
+}; <br>
+<br>
+--객체 생성<br>
+ let foo = { <br>
+ 제품명: "건조 망고", <br>
+ 유형: "당절임", <br>
+ 원산지: "필리핀" <br>
+ price: 1200 <br>
+};<br>
+<br>
+ console.log(foo); <br>
+ console.log(foo.제품명); <br>
+ console.log(foo.price); <br>
+<br>
+ --객체와 반복문<br>
+ let foo = { <br>
+ 제품명: "건조 망고", <br>
+ 유형: "당절임", <br>
+ 원산지: "필리핀" <br>
+ price: 1200 <br>
+};<br>
+<br>
+ for (let key in foo) { <br>
+  console.log(`${key}: ${foo[key]}`); <br>
+} <br>
+<br>
+--속성과 메소드<br>
+let foo = { <br>
+  name: "건조 망고", <br>
+  price: 1200, <br>
+  print: function () { <br>
+    console.log(`${this.name} - ${this.price}`); <br>
+  } <br>
+<br>
+}; <br>
+<br>
+--메소드 내부에서 this 키워드 <br>
+let foo = { <br>
+  name: "건조 망고", <br>
+  price: 1200, <br>
+  print: function () { <br>
+    console.log(`${this.name} - ${this.price}`); <br>
+  } <br>
+<br>
+}; <br>
+<br>
+foo.print();<br>
+<br>
+--객체 배열<br>
+let product = [ <br>
+  {name: '사과', price: 1200}, <br>
+  {name: '배', price: 1500}, <br>
+  {name: '자두', price: 1000}, <br>
+  {name: '딸기', price: 2000}, <br>
+  {name: '바나나', price: 1500}, <br>
+]; <br>
+<br>
+<br>
+--함수를 외부로 내보낸 형태<br>
+let product = [ <br>
+  {name: '사과', price: 1200}, <br>
+  {name: '배', price: 1500}, <br>
+  {name: '자두', price: 1000}, <br>
+  {name: '딸기', price: 2000}, <br>
+  {name: '바나나', price: 1500}, <br>
+]; <br>
+<br>
+function printProduct(bar) {<br>
+  console.log(`${bar.name} - ${bar.price}`);<br>
+}<br>
+<br>
+for (let foo of product) {<br>
+  printProduct(foo);<br>
+}<br>
+<br>
+--생성자 함수 <br>
+function product(name,bar) { <br>
+  this.foo1 = foo; <br>
+  this.bar1 = bar; <br>
+}<br>
+<br>
+--생성자 함수를 사용한 객체 생성<br>
+function product(name,bar) {<br>
+  this.foo1 = foo;<br>
+  this.bar1 = bar;<br>
+}<br>
+<br>
+let product = new product("바나나", 1200);<br>
+<br>
+console.log(product);<br>
+
+
+
+
+
+
+
+## [04월 13일]
+> 오늘 배운 내용 요약  <br />
 *익명 함수<br>
  - 이름을 붙이지 않고 함수 생성<br>
  - 함수를 호출하면 함수 내부의 코드 덩어리가 모두 실행<br>
