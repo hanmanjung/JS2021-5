@@ -1,6 +1,139 @@
 # 한만중 [201840233]
 
-## [04월 13일]
+## [05월 4일]
+> 오늘 배운 내용 요약  <br />
+-프로토타입<br>
+--생성자 함수로 만든 객체는 프로토타입이라는 공간에 메소드를 지정해서 모든 객체가 공유하도록 만들수 있다.
+<br>
+-객체 지향적으로 구성한 객체 배열<br>
+-null의 값과 자료형<br>
+-'아예 값이 없는 상태'를 구분할 때 null을 활용<br>
+1. 기본 자료형과 객체 자료형의 차이<br>
+-기본 자료형 숫자, 문자열, 불<br>
+-기본 자료형의 속성 또는 메소드를 사용할 때 기본 자료형이 자동으로 객체로 변환이 됨.<br>
+2. Number 객체<br>
+-자바스크립트에서 숫자를 표현할 때 사용<br>
+-toFixed() 메소드를 사용해 소수점 자릿수를 자르는 방법<br>
+-생성자 함수의 속성<br>
+3.String 객체<br>
+-잘못된 String 객체의 메소드 사용<br>
+-indexOf() 메소드: 특정 문자열이 있는지 확인, 위치를 리턴함 문자열이 포함되어 있지 않을 때는 -1을 리턴<br>
+
+> 여러줄 요약<br>
+-- 프로토타입을 사용한 메소드 생성<br>
+function product(name,bar) { <br>
+  this.foo1 = foo; <br>
+  this.bar1 = bar; <br>
+}<br>
+<br>
+function product(name,bar) {<br>
+  this.foo1 = foo;<br>
+  this.bar1 = bar;<br>
+}<br>
+<br>
+let product = new product("바나나", 1200);<br>
+<br>
+console.log(product);<br>
+--객체 지향적으로 구성한 객체 배열<br>
+function product(name,price) { <br>
+  this.name = name; <br>
+  this.price = price; <br>
+}<br>
+product.prototype.print = function () {<br>
+  console.log(`${this.name}의 가격은 ${this.price}원입니다.`);<br>
+};<br>
+<br>
+let products = [<br>
+  new product('바나나',1200),<br>
+  new product('사과',2000),<br>
+  new product('배',3000),<br>
+  new product('고구마',700),<br>
+  new product('감자',600),<br>
+  new product('수박',5000),<br>
+];<br>
+<br>
+for (let product of products) {<br>
+  product.print();<br>
+}<br>
+--null의 값과 자료형<br>
+console.log(null);<br>
+console.log(typeof(null));<br>
+--기본 자료형 숫자,문자열,불<br>
+let number = 273;<br>
+let String = '안녕하세요';<br>
+let boolean = true;<br>
+<br>
+console.log(typeof number);<br>
+console.log(typeof String);<br>
+console.log(typeof boolean);<br>
+--객체 숫자,문자열,불
+let number = new Number(273);<br>
+let string = new String('안녕하세요');<br>
+let boolean = new Boolean(true);<br>
+<br>
+console.log(typeof number);<br>
+console.log(typeof String);<br>
+console.log(typeof boolean);<br>
+-- 기본 자료형에 속성 또는 메소드 추가<br>
+let primitiveNumber = 273;<br>
+<br>
+primitiveNumber.method = function () {<br>
+  return 'primitive Method';<br>
+};<br>
+<br>
+console.log(primitiveNumber.method());<br>
+--프로토타입에 메소드 추가
+let primitiveNumber = 273;<br>
+<br>
+Number.prototype.method = function () {<br>
+  return 'primitive Method';<br>
+};<br>
+<br>
+console.log(primitiveNumber.method());<br>
+-- Number 객체의 메소드<br>
+ -toExponential() -> 숫자를 지수 표시로 나타낸 문자열을 리턴합니다.<br>
+ -toFixed() -> 숫자를 고정소수점 표시로 나타낸 문자열을 리턴합니다.<br>
+ -toPrecision() -> 숫자를 길이에 따라 지수 표시 또는 고정소수점 표시로 나타낸 문자열을 리턴합니다.<br>
+--생성자 함수에 속성과 메소드 추가<br>
+function Constructor() { }<br>
+Constructor.property = 273;<br>
+Constructor.method = function () { };<br>
+<br>
+console.log(Constructor.property);<br>
+console.log(Constructor.method);<br>
+-- Number 생성자 함수의 속성<br>
+ -MAX_VALUE -> 자바스크립트의 숫자가 나타낼 수 있는 최대숫자<br>
+ -MAX_VALUE -> 자바스크립트의 숫자가 나타낼 수 있는 최소숫자<br>
+ -NaN ->자바스크립트의 숫자로 나타낼 수 없는 숫자<br>
+ -POSITIVE_INFINITY ->양의 무한대 숫자<br>
+ -NEGATIVE_INFINITY ->음의 무한대 숫자<br>
+--Number 생성자 함수의 MAX_VALUE 속성<br>
+let numberA = number.MAX_VALUE;<br>
+let numberB = number.MAX_VALUE + 1;<br>
+<br>
+console.log(numberA);<br>
+console.log(numberB);<br>
+--String 객체의 속성<br>
+ -length -> 문자열의 길이를 나타냅니다.<br>
+-- 잘못된 String 객체의 메소드 사용<br>
+let string = 'abcdegf';<br>
+<br>
+string.toUpperCase();<br>
+console.log(string);<br>
+-- 올바른 String 객체의 메소드 사용<br>
+let string = 'abcdegf';<br>
+<br>
+string = string.toUpperCase();<br>
+console.log(string);<br>
+--indexOf() 메소드<br>
+let string = '안녕하세요. 좋은 아침입니다.';<br>
+<br>
+<br>
+if (string.indexOf('아침') >= 0) {<br>
+  console.log(`좋은 아침이에요...!`);<br>
+}<br>
+
+## [04월 27일]
 > 오늘 배운 내용 요약  <br />
 객체 기본 <br>
 객체는 여러개의 자료형을 한 번에 저장하는 자료형입니다.<br>
