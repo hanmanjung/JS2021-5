@@ -2,6 +2,278 @@
 
 ## [05월 4일]
 > 오늘 배운 내용 요약  <br />
+- Date 객체<br>
+ --메소드 활용 <br>
+  ＊Date 객체 <br>
+   get00() 형태 메소드, set00() 형태 메소드 : FullYear, Month, Day, Hours, Minutes, Seconds 등 사용 <br>
+ --시간 더하기<br>
+   ＊시간 더하기 <br>
+   현재 시간에 1년, 11개월, 7일을 더해 출력 <br>
+ --시간 간격 구하기<br>
+   ＊getTime() 메소드: 유닉스 타임 <br>
+   ＊2개의 시간을 빼고, 일 단위(1000밀리초*60초*60분*24시간)로 나누어 시간 간격을 구함 <br>
+- Array 객체<br>
+ --Array 객체의 기본 메소드<br>
+   ＊대부분 파괴적 메소드로 자기 자신을 변경 <br>   
+ -- 배열 정렬 -sort() 메소드 : 배열 정렬<br>
+- 조금 더 나아가기<br>
+ --프로토타입에 메소드 추가<br>
+   ＊프로토타입에 메소드를 추가하면 해당 자료형 전체에 추가 가능<br>
+   ＊String 생성자 함수의 prototype 속성에 contain() 메소드를 추가 <br>
+ --underscore.js 라이브러리<br>
+   ＊자주 사용하는 기능 정리<br>
+ --JSON 객체 <br>
+   ＊자바스크립트 객체를 사용한 데이터 표현 방법<br>
+   ＊제약 사항<br>
+     문자열은 큰따옴표로 만듬<br>
+     모든 키는 큰따옴표로 감싸야 함<br>
+     숫자, 문자열, 불 자료형만 사용할 수 있음<br>
+   ＊JSON 객체의 메소드<br>  
+   ＊JSON.stringify() 메소드: 문자열 리턴<br>
+   ＊JSON.parse() 메소드: 객체 리턴<br>
+- 1. 예외와 기본 예외 처리<br>
+ -- 예외: 실행에 문제가 발생하면 자동 중단됨. 이렇게 발생한 오류<br>
+ -- 예외 처리: 오류에 대처할 수 있게 하는 것<br>
+ -- 예외 상황 확인: undefined 자료형을 일반적인 객체 또는 함수처럼 다루면 TypeError 예외가 발생<br>
+- 2. 고급 예외 처리
+ -- try catch finally 구문
+- 3. 예외 객체
+ -- 예외가 발생하면 어떤 예외가 발생했는지 정보를 전달함 <br>
+ -- catch 구문의 괄호 안의 변수<br>
+ -- name 속성과 message 속성이 있음<br>
+- 4. 예외 강제 발생<br>
+ -- throw 키워드 사용<br>
+ -- throw 키워드 뒤에는 문자열 또는 Error 객체를 입력 <br>
+
+   > 여러줄 요약<br>
+  -- Date 객체 생성 방법<br>
+  new Date() -> 현재 시간으로 Date 객체를 생성합니다.<br> 
+  new Date(<유닉스 타임>) -> 유닉스 타임(1970년 1월 1일 00시 00분 00초부터 경과한 밀리초)으로 Date 객체를 생성합니다.<br>
+  <br>
+  new Date(<시간 문자열>) -> 문자열로 Date 객체를 생성합니다.<br>
+  new Date(<년>,<월-1>,<일>,<시간>,<분>,<초>,<밀리초>) -> 시간 요소(년,월-1,일,시간,분,초,밀리초)를 기반으로 Date 객체를 생성합니다.<br>
+  -- Date 객체 생성<br>
+  // 현재 시간을 기반으로 Date 객체를 생성합니다.<br>
+  let dateA = new Date();<br>
+  console.log(dateA);<br>
+<br>
+  // 유닉스 타임(1970년 1월 1일 00시 00분 00초부터 경과한 밀리초)<br>
+  let dateB = new Date(692281800000);<br>
+  console.log(dateB);<br>
+<br>
+  // 문자열을 기반으로 Date 객체를 생성합니다.<br>
+  let dateC = new Date("December 9, 1991 21:30:00")<br>
+  console.log(dateC);<br>
+<br>
+  //시간 요소(년,월-1,일,시간,분,초,밀리초)를 기반으로 Date 객체를 생성합니다.<br>
+  let dateD = new Date(1991, 12, -1, 9, 21, 30, 0, 0);<br>
+  console.log(dateD);<br>
+<br>
+ --시간 더하기<br>
+  // 현재 시간을 구합니다.<br>
+  let date = new Date();<br>
+<br>
+  //출력1<br>
+  console.log(date);<br>
+<br>
+  //시간을 더합니다.<br>
+  date.setFullYear(date.getFullYear() + 1);<br>
+  date.setMonth(date.getMonth() + 11);<br>
+  date.setDate(date.getDate() + 3);<br>
+
+ --시간 간격 구하기 <br>
+ // 변수를 선언합니다.<br>
+ let now = new Date();<br>
+ let before = new Date('December 9, 1991');<br>
+<br>
+ // 시간 간격을 구합니다.<br>
+ let interval = now.getTime() - before.getTime();<br>
+ interval = Math.floor(interval / (1000*60*60*24));<br>
+<br>
+ //출석합니다.<br>
+ console.log(`태어나고 ${interval}일 지났습니다.`)<br>
+
+ --Array 객체의 메소드<br>
+ concat() -> 매개 변수로 입력한 배열의 요소를 모두 합쳐 배열을 만들어 리턴합니다.<br>
+ join() -> 배열 안의 모든 요소를 문자열로 만들어 리턴합니다.<br>
+ pop() -> 배열의 마지막 요소를 제거하고 리턴합니다.<br>
+ push() -> 배열의 마지막 부분에 새로운 요소를 추가합니다.<br>
+ reverse() -> 배열의 요소 순서를 뒤집습니다.<br>
+ slice() -> 배열 요소의 지정한 부분을 리턴합니다. <br>
+ sort() -> 배열의 요소를 정렬합니다.<br>
+ splice() -> 배열 요소의 지정한 부분을 삭제하고 삭제한 요소를 리턴합니다.<br>
+
+ --Array 객체의 메소드<br>
+ // 배열을 선언합니다.<br>
+ let array =[{<br>
+   name:'고구마',<br>
+   price: 1000<br>
+ },{<br>
+   name:'감자',<br>
+   price: 500<br>
+ },{<br>
+   name:'바나나',<br>
+   price: 1500<br>
+ }];<br>
+<br>
+ // 배열의 요소를 꺼냅니다.<br>
+ let popped = array.pop();<br>
+ console.log('- 배열에서 꺼낸 요소');<br>
+ console.log(popped);<br>
+ console.log('- pop() 메소드를 호출한 이후의 배열');<br>
+ console.log(array);<br>
+<br>
+ // 배열에 요소를 넣습니다.<br>
+ array.push(popped);<br>
+ array.push({<br>
+   name: '사과',<br>
+   price: 2000<br>
+ })<br>
+ console.log('- push() 메소드를 호출한 이후의 배열');<br>
+ console.log(array);<br>
+
+ -- sort() 메소드<br>
+ // 배열을 선언합니다.<br>
+ let arrayA = ['고구마', '감자', '바나나'];<br>
+ let arrayB =[{<br>
+   name: '고구마',<br>
+   price: 1000<br>
+ },{<br>
+   name: '감자',<br>
+   price: 500<br>
+ }, {<br>
+   name: '바나나',<br>
+   price: 400<br>
+ }];<br>
+<br>
+ //기본 배열을 정렬하고 출력합니다.<br>
+ arrayA.sort();<br>
+ console.log('- 문자열로 정렬');<br>
+ console.log(arrayA);<br>
+ console.log();<br>
+ console.log('- 문자열로 정렬(역순)');<br>
+ console.log(arrayA.reverse());<br>
+ console.log();<br>
+<br>
+// 객체 내부의 숫자로 정렬하고 출력합니다.<br>
+arrayB.sort((itemA, itemB) => {
+  return itemA.price - itemB.price;
+});
+console.log('- 객체 내부의 숫자로 정렬')
+console.log(arrayB);
+console.log();
+
+// 객체 내부의 문자열로 정렬하고 출력합니다.<br>
+arrayB.sort((itemA, itemB) => {<br>
+  if (itemA.name < itemB.name){<br>
+    return -1;<br>
+  }else if (itemA.name > itemB.name){<br>
+    return 1;<br>
+  }else {<br>
+    return 0;<br>
+  }<br>
+});<br>
+console.log('- 객체 내부의 문자열로 정렬')<br>
+console.log(arrayB);<br>
+<br>
+ -- underscore.js 라이브러리를 사용한 정렬<br>
+ // 모듈을 추출합니다.<br>
+ const _ = require('underscore');<br>
+<br>
+ // 변수를 선언합니다.<br>
+ const array = [{<br>
+   name: '고구마',<br>
+   price: 1000<br>
+ },{<br>
+   name: '감자',<br>
+   price: 500<br>
+ },{<br>
+   name: '바나나',<br>
+   price: 1500<br>
+ }];<br>
+ // 1번 형태<br>
+ const outputA = _sortBy(array, (item) => item.price);<br>
+ console.log(outputA);<br>
+<br>
+ // 2번 형태<br>
+ const outputB = _(array).sortBy(item) => item.name);<br>
+ console.log(outputB);<br>
+<br>
+ -- JSON 객체 활용<br>
+ //변수를 선언합니다.<br>
+ const javascriptObject = [{<br>
+   name: '윤인성',<br>
+   region: '서울'<br>
+ },{<br>
+   name: '윤명월',<br> 
+   region: '도쿄'<br>
+ }];<br>
+<br>
+ //JSON.stringify() 메소드로 자바스크립트 객체를 JSON 문자열로 변경합니다.<br>
+ const outputA = JSON.stringify(javascriptObject);<br>
+ const outputB = JSON.stringify(javascriptObject, null, 2);<br>
+ console.log(typeof(outputA));<br>
+ console.log(outputA);<br>
+ console.log(outputB);<br>
+ console.log('------------------');<br>
+<br>
+ //JSON.parse() 메소드로 JSON 문자열을 자바스크립트 객체로 변경합니다.<br>
+const outputC = JSON.parse(outputB)<br>
+console.log(typeof(outputC));<br>
+console.log(outputC);<br>
+<br>
+-TypeError 발생<br>
+// 함수 선언<br>
+function callThreeTimes(callback) {<br>
+  for (let i=0;i<3;i++){<br>
+    callback();<br>
+  }<br>
+}<br>
+<br>
+// 정상 실행<br>
+callThreeTimes(function () { console.log('안녕하세요');<br>
+<br>
+// 예외 발생<br>
+callThreeTimes();<br>
+<br>
+- TypeError를 기본 예외 처리로 처리<br>
+function callTenTimes(callback) {<br>
+  if (callback) {<br>
+    for (let i=0;i<10;i++){<br>
+      callback();<br>
+    }<br>
+  }else {<br>
+    console.log('매개 변수 callback이 지정되지 않았습니다.');<br>
+  }<br>
+}<br>
+<br>
+// 정상 실행<br>
+callTenTimes(function () {console.log('안녕하세요'); });<br>
+<br>
+// 예외 발생<br>
+callTenTimes();<br>
+<br>
+- 고급 예외 처리<br>
+try {<br>
+  // 예외를 발생시킵니다.<br>
+  const array = new Array(-2000);<br>
+} catch (exception) {<br>
+  console.log(`${exception.name} 예외가 발생했습니다.`);<br>
+} finally {<br>
+  console.log(`finally 구문이 실행되었습니다.`);<br>
+}<br>
+<br>
+- 예외 객체<br>
+try {<br>
+  // 예외를 발생시킵니다.<br>
+  error.error.error();
+} catch (e){
+  console.log(e.name);
+  console.log(e.message);
+}
+
+## [05월 4일]
+> 오늘 배운 내용 요약  <br />
 -프로토타입<br>
 --생성자 함수로 만든 객체는 프로토타입이라는 공간에 메소드를 지정해서 모든 객체가 공유하도록 만들수 있다.
 <br>
