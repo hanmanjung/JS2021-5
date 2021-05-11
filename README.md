@@ -266,12 +266,12 @@ try {<br>
 - 예외 객체<br>
 try {<br>
   // 예외를 발생시킵니다.<br>
-  error.error.error();
-} catch (e){
-  console.log(e.name);
-  console.log(e.message);
-}
-
+  error.error.error();<br>
+} catch (e){<br>
+  console.log(e.name);<br>
+  console.log(e.message);<br>
+}<br>
+<br>
 ## [05월 4일]
 > 오늘 배운 내용 요약  <br />
 -프로토타입<br>
