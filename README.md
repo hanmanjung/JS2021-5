@@ -1,5 +1,313 @@
 # 한만중 [201840233]
 
+## [05월 18일]
+> 오늘 배운 내용 요약  <br />
+1. 전역 변수<br>
+ - 전역 변수, 전역 함수, 전역 객체 : 모든 곳에서 사용할 수 있는 것들<br>
+2.process 객체의 속성과 이벤트<br>
+  - node.js는 process 전역 객체를 제공<br>
+  - process 객체는 프로세스 정보를 제공하며, 제어할 수 있게 하는 객체<br>
+3. process 객체와 이벤트 개요<br>
+  - Node.js의 이벤트 연결 메소드<br>
+  - process 객체에 exit 이벤트와 uncaughtException 이벤트를 연결 <br>
+  - 이후에 예외를 강제로 발생시켜 이벤트가 발생하는지 확인<br>
+  - 이벤트 매개 변수 : 이벤트 핸들러의 매개 변수로 전달되는 매개 변수<br>
+4. os 모듈<br>
+  - os 모듈 사용<br>
+  - os 모듈 추출<br>
+5. url 모듈<br>
+  - url 모듈을 추출하고, parse() 메소드를 사용<br>
+6. File System 모듈<br>
+ * 파일 읽기<br>
+   - 실행할 자바스크립트 파일이 있는 폴더에 textfile.txt 이름의 파일을 생성<br>
+    -- textfile.txt 파일에는 간단한 문자열 'this is a textfile.txt'를 입력<br>
+   - fs.readFileSync() 메소드를 사용해 동기적으로 파일을 읽음<br>
+   - fs.readFile () 메소드를 사용해 비동기적으로 파일을 읽음<br>
+   - 동기와 비동기의 실행 결과는 같지만 내부 실행 구조는 다름<br>
+   - 동기적으로 파일을 읽어 들일 때 코드 순서<br>
+     1) 파일의 크기가 굉장히 크다면 2에서 3으로 이동할 때 코드가 정지할 가능성이 있음<br>
+     2) 문제를 해결을 위해 쓰레드 기능을 사용해야 함<br>
+     3) Node.js에는 쓰레드의 기본 이념이 들어 있음<br>
+   - 비동기적으로 구성된 코드<br>
+     1) 2에서 3으로 이동하는 시간이 0초에 가까움<br>
+     2) 즉, 코드는 진행하고 Node.js의 뒷단에서 파일을 읽어 들이는 처리가 수행됨<br>
+     3) 이러한 뒷단에서 처리가 모두 끝나면, 그때 콜백 함수 부분을 실행함<br>
+     4) 콜백 함수의 첫 번째 매개 변수는 오류객체이고 두 번째 매개 변수가 원하는 값임<br>
+ * 비동기 처리의 장점<br>
+ - 웹 서버를 C++ 프로그래밍 언어로 만들면 무척 빠르지만, 개발과 유지 보수는 어려움<br>
+ - 전 세계 웹 서비스 기업(페이스북,트위터 등)도 C++로 웹 서버를 개발하지 않고 PHP, 자바, 루비, 파이썬, Node.js등 
+ 프로그래밍 언어로 개발<br>
+ - 프로그래밍 언어 자체는 느리지만 큰 의미가 없다고 판단해 개발 속도와 유지 보수성이 좋은 프로그래밍 언어를 사용<br>
+ - 자바스크립트 프로그래밍 언어는 C++, 자바보다 느리지만 Node.js를 사용하면<br>
+ -손쉽게 비동기 처리를 구현하여 빠른 처리가 가능<br>
+ * 파일 처리와 예외 처리<br>
+ - 동기 코드 예외처리 : try catch 구문<br>
+ - 비동기 코드 예외처리 : 콜백함수의 첫 번째 매개 변수 error를 활용<br>
+7. 노드 패키지 매니저<br> 
+ - 과거의 프로그래밍 언어들은 외부 모듈 설치가 어려웠음<br>
+ -현재는 '패키지 매니저' 모듈 관리 프로그램을 사용해 모듈을 쉽게 설치하고 활용 가능함<br>
+ - Node.js는 npm(Node.js Package Manager) 패키지 매니저를 사용<br>
+ - npm을 이용한 외부 모듈 설치<br>
+ - 명령어 뒤에 @ 기호를 사용하면 원하는 버전을 설치<br>
+8. request 모듈 <br>
+ - 코드 실행 전에 npm install request 명령어를 실행해서 request 모듈을 설치<br>
+9. cheerio 모듈<br>
+ - request 모듈로 가져온 웹페이지는 단순한 HTML 문자열임<br>
+ - 여기에서 원하는 정보를 추출해야 단순한 '데이터'가 '정보'가 됨 -> 파싱<br>
+ - cheerio 모듈 : 가져온 웹 페이지의 특정 위치에서 손쉽게 데이터를 추출<br> 
+<br>
+- 조금 더 나아가기<br>
+1. 전역변수 <br>
+ * 문자열 자료형의 전역 변수<br>
+  - __filename<br>
+  - __firname<br>
+ * __filename과 __dirname 출력<br>
+ console.log(__filename);<br>
+ console.log(__dirname);<br>
+2. process 객체의 속성과 이벤트<br>
+ * process 객체의 속성<br>
+  - env -> 컴퓨터 환경 정보를 나타냅니다.<br>
+  - version -> Node.js 버전을 나타냅니다.<br>
+  - versions -> Node.js와 종속된 프로그램 버전을 나타냅니다.<br>
+  - arch -> 프로세서의 아키텍처를 나타냅니다.<br>
+  - platform -> 플랫폼을 나타냅니다.  <br>
+ * process 객체의 메소드<br>
+  - exit([exitCode=0]) -> 프로그램을 종료합니다.<br>
+  - memoryUsage() -> 메모리 사용 정보 객체를 리턴합니다.<br>
+  - upTime() -> 현재 프로그램이 실행된 시간을 리턴합니다.<br>
+3. process 객체와 이벤트 개요<br>
+ * Node.js 이벤트 연결 메소드<br>
+  - on(<이벤트 이름>.<이벤트 핸들러>) -> 이벤트를 연결합니다.<br>
+ * process 객체의 이벤트<br>
+  - exit -> 프로세스가 종료될 때 발생합니다.<br>
+  - uncaughtException -> 예외가 일어날 때 발생합니다.<br>
+-- 코드<br>
+  // exit 이벤트를 연결합니다.<br>
+  process.on('exit', ()=> {<br>
+    console.log('프로세스가 종료되었습니다.');<br>
+  });<br>
+<br>
+  // uncaughtException 이벤트를 연결합니다.<br>
+  process.on('uncaughtException', () => {<br>
+    console.log('예외가 발생했습니다.');<br>
+  });<br>
+<br>
+  // 예외를 강제로 발생시킵니다.<br>
+  error.error.error();<br>
+ * exit 이벤트의 이벤트 매개 변수<br>
+  process.on('exit', (code) => {<br>
+    console.log(1About to exit with code: ${code}`);<br>
+  });<br>
+4. os 모듈 <br>
+ * os 모듈 추출<br>
+  // 모듈을 추출합니다.<br>
+   const os = require('os');<br>
+<br>
+  - os 모듈의 메소드<br>
+   - hostname() -> 운영체제의 호스트 이름을 리턴합니다.<br>
+   - type() -> 운영체제의 이름을 리턴합니다.<br>
+   - platform() -> 운영체제의 플랫폼을 리턴합니다.<br>
+   - arch() -> 운영체제의 아키텍처를 리턴합니다.<br>
+   - release() -> 운영체제의 버전을 리턴합니다.<br>
+   - upTime() -> 운영체제가 실행된 시간을 리턴합니다.<br>
+   - loadavg() -> 로드 에버리지 정보를 담은 배열을 리턴합니다. <br>
+   - totalmem() -> 시스템의 총 메모리를 리턴합니다.<br>
+   - freemem() -> 시스템의 사용 가능한 메모리를 리턴합니다.<br>
+   - cpus() -> CPU의 정보를 담은 객체를 리턴합니다.<br>
+   - getNetworkInterfaces() -> 네트워크 인터페이스의 정보를 담은 배열을 리턴합니다.<br>
+ * os 모듈<br>
+  // 모듈을 추출합니다. <br>
+  const os = require('os');<br>
+<br>
+  // 모듈을 사용합니다.<br>
+  console.log(os.hostname());<br>
+  console.log(os.type());<br>
+  console.log(os.platform());<br>
+  console.log(os.release());<br>
+  console.log(os.uptime());<br>
+  console.log(os.loadavg());<br>
+  console.log(os.totalmem());<br>
+  console.log(os.freemem());<br>
+  console.log(os.cpus());<br>
+  console.log(os.networkInterfaces());<br>
+5. url 모듈<br>
+ * url 모듈 추출 <br>
+  // 모듈을 추출합니다.<br>
+  const url = require('url');<br>
+ * url 모듈의 메소드<br>
+  - parse(urlStr[.parseQueryString=false,
+  slashesDenoteHost=false]) -> URL 문자열을 URL 객체로 변환해 리턴합니다.<br>
+  - format(urlObj) -> URL 객체를 URL 문자열로 변환해 리턴합니다. <br>
+  - resolve(from.to) -> 매개 변수를 조합하여 완전한 URL 문자열을 생성해 리턴합니다.<br>
+ * url 모듈<br>
+ // 모듈을 추출합니다.<br>
+ const url = require('url');<br>
+<br>
+ // 모듈을 사용합니다.<br>
+ const parsedObject = 
+       url.parse('http://www.habit.co.kr/store/books/look.php?p_code=B4250257160');<br>
+ console.log(parseObject);<br>
+ * fs 모듈 추출 방법<br>
+  //모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+ * 파일 읽기 메소드 <br>
+  - fs.readFileSync(<파일 이름>) -> 동기적으로 파일을 읽어 들입니다<br>
+  - fs.readFile(<파일 이름>,<콜백 함수>) -> 비동기적으로 파일을 읽어 들입니다.<br>
+<br>
+ * fs.readFileSync() 메소드<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+  // 파일을 읽어 들이고 출력합니다.<br>
+  const file = fs.readFileSync('textfile.txt');<br>
+  console.log(file);<br>
+  console.log(file.toString());<br>
+ * fs.readFile() 메소드<br>
+ // 모듈을 추출합니다.<br>
+ const fs = require('fs');<br>
+<br>
+ //파일을 읽어 들입니다.<br>
+ fs.readFile('textfile.txt' (error, file) => {<br>
+   // 출력합니다.<br>
+   console.log(file);<br>
+   console.log(file.toString());<br>
+ });<br>
+<br>
+6. File System 모듈<br>
+ * 여러 파일을 비동기적으로 읽기<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+<br>
+  //파일을 읽어 들입니다.<br>
+  const a = readFileSync('a.txt');<br>
+  const b = readFileSync('b.txt');<br>
+  const c = readFileSync('c.txt');<br>
+<br>
+  // 파일을 출력합니다.<br>
+  console.log(a, b, c);<br>
+<br>
+ * 여러 파일을 비동기적으로 읽기<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+  const async = require('async');<br>
+<br>
+  //병렬적으로 파일을 읽어 들입니다.<br>
+  async.parallel({<br>
+    (callback) => { fs.readFile('a.txt', callback); },<br>
+    (callback) => { fs.readFile('b.txt', callback); },<br>
+    (callback) => { fs.readFile('c.txt', callback); },<br>
+  }, (error, result) => {<br>
+    // 출력합니다.<br>
+    console.log(results); <br>
+  });<br>
+  <br>
+ * 파일 쓰기 메소드<br>
+  - fs.writeFileSync(<파일 이름>, <문자열>) -> 동기적으로 파일을 씁니다.<br>
+  - fs.writeFile(<파일 이름>,<문자열>,<콜백 함수>) -> 비동기적으로 파일을 씁니ㅏ.<br>
+ * fs.writeFileSync() 메소드<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+<br>
+  // 파일을 씁니다.<br>
+  fs.writeFileSync('output.txt', '안녕하세요....!');<br>
+  console.log('파일 쓰기를 완료했습니다.');<br>
+<br>
+ * fs.writeFileSync() 메소드 예외 처리<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+<br>
+  // 예외 처리합니다.<br>
+  try {<br>
+    // 파일을 읽어 들이고 출력합니다.<br>
+    const file = fs.readFileSync('none.txt');<br>
+    console.log(file);<br>
+    console.log(file.toString());<br>
+  } catch (exception) {<br>
+    // 예외가 발생했을 때<br>
+     console.log('파일을 읽어 들이는데 문제가 발생했습니다.');<br>
+     console.log(exception);<br>
+  }<br>
+<br>
+ * fs.readFile() 메소드 예외 처리<br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+<br>
+  // 파일을 읽어 들입니다.<br>
+  fs.readFile('none.txt', (error, file) => {<br>
+    // 예외 처리합니다.<br>
+    if (error) {<br>
+      // 예외가 발생했을 때<br>
+      console.log('파일을 읽어 들이는데 문제가 발생했습니다.');<br>
+      console.log(error);<br>
+    } else { <br>
+      // 출력합니다.<br>
+      console.log(file);<br>
+      console.log(file.toString());<br>
+    }<br>
+  });<br>
+  <br>
+<br>
+ * npm 을 이용한 외부 모듈 설치 <br>
+  > npm install <모듈 이름><br>
+  예> npm install express<br>
+ * 명령어 뒤에 @ 기호를 사용하면 원하는 버전을 설치<br>
+  > npm install <모듈 이름>@<버전> <br>
+  예> npm install express@4<br>
+  예> npm install express@4.2<br>
+  예> npm install express@4.2.7<br>
+<br>
+8.request 모듈<br>
+ * 설치 <br>
+  > npm install request <br>
+ * request 모듈 추출 <br>
+  // 모듈을 추출합니다. <br>
+  const request = require('request');<br>
+<br>
+ * request 모듈<br>
+  // 모듈을 추출합니다.<br>
+  const request = require('request');<br>
+<br>
+  //request 모듈을 사용합니다.<br>
+  const url = ' http://www.habit.co.kr/store/books/new_book_list.html';<br>
+  request(url, (error, response,body) => {<br>
+    console.log(body);<br>
+  });<br>
+9. cheerio 모듈<br>
+ * cheerio 모듈 설치 <br>
+  > npm install cheerio<br>
+ * cheerio 모듈 추출<br>
+  // 모듈을 추출합니다.<br>
+  const cheerio = require('cheerio');<br>
+<br>
+10. async 모듈<br>
+ * async 모듈 설치<br>
+  > npm install async <br>
+ * async 모듈 추출<br>
+   // 모듈을 추출합니다.<br>
+   const async = require('async');<br>
+<br>
+ * async 모듈의 parallel() 메소드 <br>
+  // 모듈을 추출합니다.<br>
+  const fs = require('fs');<br>
+  const async = require('async');<br>
+<br>
+  // 파일A를 읽습니다.<br>
+  async.parallel({<br>
+    fileA: (callback) => {<br>
+      fs.readFile('fileA.txt', callback);<br>
+    },<br>
+    fileB: (callback) => {<br>
+      fs.readFile('fileB.txt', callback);<br>
+    },<br>
+    fileC: (callback) => {<br>
+      fs.readFile('fileC.txt', callback);<br>
+    }<br>
+  }, (error, result) => { <br>
+    console.log(results.fileA);<br>
+    console.log(results.fileB);<br>
+    console.log(results.fileC); <br>
+  });<br>
+  <br>
+  
 ## [05월 11일]
 > 오늘 배운 내용 요약  <br />
 - Date 객체<br>
