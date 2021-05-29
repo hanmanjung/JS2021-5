@@ -28,14 +28,184 @@
 >  * morgan 미들웨어<br>
 >  * body-parser 미드웨어<br>
 <br>
-> 1. RESTful 웹 서비스 개요<br>
->  * REST 규정에 맞게 만든 ROA를 따르는 웹 서비스 디자인 표준<br>
->  * RESTful 웹 서비스<br>
-> 2. 코드 구성<br>
-> 3. Postman 크롬 애플리케이션<br>
+1. RESTful 웹 서비스 개요<br>
+  * REST 규정에 맞게 만든 ROA를 따르는 웹 서비스 디자인 표준<br>
+  * RESTful 웹 서비스<br>
+2. 코드 구성<br>
+3. Postman 크롬 애플리케이션<br>
 - 조금 더 나아가기<br>
-> - 
-
+1. express 모듈 설치<br>
+ $ npm install express@4 <br>
+<br>
+2. express 모듈을 사용한 서버 생성과 실행<br>
+ - express 모듈의 기본 메소드
+   express() -> 서버 애플리케이션 객체를 생성합니다. <br>
+   app.use() -> 요청이 왔을 때 실행할 함수를 지정합니다. <br>
+   app.listen -> 서버를 실행합니다. <br>
+<br>
+ - express 모듈로 서버 생성과 실행<br>
+  // 모듈을 추출합니다.<br>
+  const express = require('express');<br>
+<br>
+  //서버를 생성합니다.<br>
+  const app = express();<br>
+<br>
+  // request 이벤트 리스너를 설정합니다.<br>
+  app.use{(request, response) => {<br>
+    response.send('<h1>Hello express</h1>');<br>
+  });<br>
+<br>
+// 서버를 실행합니다.<br>
+app.listen(52273, () => {<br>
+  console.log('Server running at http://127.0.0.1:52273');<br>
+});<br>
+<br>
+  - express 모듈의 페이지 라우팅 메소드 <br>
+    get(path. callback) -> GET 요청이 발생했을 때 이벤트 리스너를 지정합니다. <br>
+    post(path. callback) -> POST 요청이 발생했을 때 이벤트 리스너를 지정합니다.<br>
+    put(path. callback) -> PUT 요청이 발생했을 때 이벤트 리스너를 지정합니다.<br>
+    delete(path. callback) -> DELETE 요청이 발생했을 때 이벤트 리스너를 지정합니다.<br>
+    all(path. callback) -> 모든 요청이 발생했을 때 이벤트 리스너를 지정합니다.<br>
+    <br>
+  - 페이지 라우팅을 할 때 토큰을 활용함<br>
+    '<토큰 이름>' 형태로 설정<br>
+    토큰은 다른 문자열로 변환 입력가능, request 객체의 params 속성으로 전달됨<br>
+    <br>
+  - 페이지 라우팅<br>
+  // 모듈을 추출합니다.<br>
+  const express = require('express');<br>
+<br>
+  //서버를 생성합니다.<br>
+  const app = express(); <br>
+<br>
+  // request 이벤트 리스너를 설정합니다. <br>
+  app.get('/page/:id', ({)request, response) => {<br>
+    //토큰을 꺼냅니다.<br>
+    const id = request.params.id;<br>
+<br>
+    // 응답합니다.<br>
+    response.send(`<h1>${id} page</h1>`);<br>
+  });<br>
+<br>
+  // 서버를 실행합니다.<br>
+  app.listen(52273, () => {<br>
+    console.log('Server running at http://127.0.0.1:52273');<br>
+  });<br>
+<br>
+4. 요청과 응답 <br>
+  - response 객체의 기본 메소드 <br>
+    send() -> 데이터 본문을 제공합니다. <br>
+    status() -> 상태 코드를 제공합니다. <br>
+    set() -> 헤더를 설정합니다.
+  - 데이터 제공 <br>
+    send() 메소드 : 사용자에게 데이터 본문을 제공 <br>
+    send() 메소드는 가장 마지막에 실행해야 하며, 두 번 실행할 수 없음<br>
+<br>
+  - MIME 형식
+    text/plain -> 기본적인 텍스트를 의미합니다. <br>
+    text/html -> html 데이터를 의미합니다.<br>
+    image/png -> png 데이터를 의미합니다.<br>
+    audio/mpe -> MP3 음악 파일을 의미합니다.<br>
+    video/mpeg -> MPEG 비디오 파일을 의미합니다. <br>
+    application/json -> json 데이터를 의미합니다. <br>
+    multipart/form-data -> 입력 양식 데이터를 의미합니다. <br>
+<br>
+  - Content-Type 지정 메소드<br>
+    type() -> Content-Type을 MIME 형식으로 지정합니다.<br>
+  - HTTP 상태 코드의 예<br>
+    1XX -> 처리중<br>
+    2XX -> 성공<br>
+    3XX -> 리다이렉트<br>
+    4XX -> 클라이언트 오류<br>
+    5XX -> 서버 오류 <br>
+<br>
+  - status() 메소드<br>
+    status() -> 상태 코드를 지정합니다.<br>
+<br>
+  - 상태 코드<br>
+  // 모듈을 추출합니다. <br>
+  const express = require('express');<br>
+<br>
+  // 서버를 생성합니다.<br>
+  const app = express();<br>
+<br>
+  // request 이벤트 리스너를 설정합니다.<br>
+  app.get('*', (request, response) => {<br>
+    response.status(404);<br>
+    response.send('해당 경로에는 아무것도 없습니다.');<br>
+  });<br>
+  <br>
+  // 서버를 실행합니다.<br>
+  app.listen(52273, () => {<br>
+    console.log('Server running at http://127.0.0.1:52273');<br>
+  });<br>
+<br>
+  - redirect() 메소드<br>
+    redirect() -> 리다이렉트합니다. <br>
+<br>
+5. 미들웨어 <br>
+  - 미들웨어 설정 메소드 <br>
+    use() -> 미들웨어를 설정합니다. <br>
+  - 정적 파일 제공 <br>
+    // 모듈을 추출합니다. <br>
+    const express = require('express');<br>
+<br>
+    //서버를 생성합니다. <br>
+    const app = express();<br>
+    app.use(express.static('public'));<br>
+<br>
+    // request 이벤트 리스너를 설정합니다.<br>
+    app.get('*', (request, response) => {<br>
+      response.send(404);<br>
+      response.send('해당 경로에는 아무것도 없습니다.');<br>
+    });<br>
+    <br>
+    // 서버를 실행합니다. <br>
+    app.listen(52273, () => {<br>
+      console.log('Server running at http://127.0.0.1:52273');<br>
+    });<br>
+<br>
+  - 요청 본문의 종류<br>
+    application/x-www-form-urlencoded -> 웹 브라우저에서 입력 양식을 POST,PUT,DELETE 방식 등으로 전달 할 때 사용하는 기본적인 요청 형식입니다. <br>
+    application/json -> JSON 데이터로 요청하는 방식입니다. <br>
+    nultipart/form-data -> 대용량 파일을 전송할 때 사용하는 요청 방식입니다.<br>
+<br>
+  - 속성 정리 : 클라이언트가 서버로 데이터를 전송하는 세 가지 방법 <br>
+    params 객체 : URL의 토큰, 보기가 간편 <br>
+    query 객체 : URL의 요청 매개 변수, 토큰보다 많은 데이터를 전달할 수 있으며,
+    주소로 어떤 데이터가 오고 가는지 확인가능<br>
+    body 객체 : 대용량 문자열 등을 전송할 때 사용, 주소에 데이터를 기록하지 못하므로 새로고침이나 즐겨찾기 기능 등을 활용할 수 없음 <br>
+<br>
+  - RESTful 웹 서비스의 구조 <br>
+    GET -> 컬렉션을 조회합니다.<br>
+    POST -> 컬렉션에 새로운 데이터를 추가합니다.<br>
+    PUT -> 컬렉션 전체를 한꺼번에 변경합니다.<br>
+    DELETE -> 컬렉션 전체를 삭제합니다.<br>
+<br>
+  - RESTful 웹 서비스
+    GET -> 모든 사용자 정보를 조회합니다.<br>
+    POST -> 사용자를 추가합니다.<br>
+    GET -> 특정 사용자 정보를 조회합니다.<br>
+    PUT -> 특정 사용자 정보를 수정합니다.<br>
+    DELETE -> 특정 사용자 정보를 제거합니다.<br>
+<br>
+  - RESTful 웹 서비스<br>
+  // 모듈을 추출합니다.<br>
+  const express = require('express');<br>
+  const bodyparser = require('body-parser');<br>
+  //서버를 생성/실행합니다.<br>
+  const app = express();<br>
+  app.listen(52273, () => {<br>
+    console.log('Server Running at http://127.0.0.1:52273');<br>
+  });<br>
+  <br>
+  // 미들웨어를 추가합니다.<br>
+  app.use(bodyParser.urlencoded({<br>
+    extended: false<br>
+  }));<br>
+<br>
+  // 변수를 선언합니다. <br>
+  
 ## [05월 18일]
 > 오늘 배운 내용 요약  <br />
 1. 전역 변수<br>
