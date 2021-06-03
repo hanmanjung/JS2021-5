@@ -1,5 +1,313 @@
 # 한만중 [201840233]
 
+## [06월 1일]
+> 오늘 배운 내용 요약  <br />
+> 1. 사용할 수 없는 코드 <br>
+>  * let 키워드와 const 키워드<br>
+>  * 템플릿 문자열 <br>
+>  * 화살표 함수 <br>
+>  * for of 반복문 <br>
+>  * 사용할 수 없는 메소드를 사용한 코드<br>
+> 2. 브라우저 객체 모델 <br>
+>  * 웹 브라우저와 관련된 객체<br>
+> 3. window 객체 <br>
+>  * window 객체 : 웹 페이지 자체를 나타냄<br>
+> 4. 웹 브라우저에서 공통으로 활용할 수 있는 속성 <br>
+> 5. location 객체와 history 객체 <br>
+>  * 웹 브라우저에서 공통으로 활용할 수 있는 속성 <br>
+>  * 메소드 <br>
+>  * 페이지 이동 : assign () 메소드 
+>                 replace () 메소드 - <뒤로가기> 버튼을 사용할 수 없음<br>
+>  * history 객체의 메소드<br>
+> 6. navigator 객체<br>
+>  * 웹 페이지를 실행하는 웹 브라우저 정보가 들어있음 <br>  
+>  * 사용자의 웹 브라우저, 운영체제를 구분할 수 있음<br>
+<br>
+> 1. 문서 객체 모델 관련 용어<br>
+>  * 문서 객체 모델<br>
+> 2. 웹 페이지 생성 순서<br>
+>  * 웹 브라우저는 웹 페이지를 실행 시 HTML 코드를 위에서 아래로 실행함<br>
+> 3. 문서 객체 선택 <br>
+>  * 1개의 문서 객체 선택 <br>
+>  * 여러 개의 문서 객체 선택<br>
+> 4. 문자 조작 <br>
+>  * 스타일 조작<br>
+>  * 속성 조작<br>
+> 5. 이벤트<br>
+>  * 이벤트 관련 용어 정리 <br>
+>  * 인라인 이벤트 모델 <br>
+>  * 고전 이벤트 모델<br>
+>  * 이벤트 객체<br>
+>  * 기본 이벤트 제거<br>
+<br>
+> 1. jQuery 사용 준비<br>
+> 2. jQuery 객체<br>
+>  * jQuery 라이브러리는 $ 함수 활용<br>
+>  * $ 함수의 매개 변수에는 문서 객체, CSS 형식, HTML 형식의 문자열 삽입<br>
+> 3. 문서 객체 선택 <br>
+>  * CSS 선택자를 사용해 문서 객체를 선택 <br>
+> 4. 문서 객체 개별 조작 <br>
+>  * each() 메소드 <br>
+>  * 주의점 : ECMAscript5에서 제공하는 Array 객체의 forEach ()메소드와 인덱스, 요소 순서가 다름<br>
+> 5. 문서 객체 조작<br>
+>  * 문자 조작<br>
+>  * 스타일 조작<br>
+>  * 속성 조작<br>
+> 6. 문서 객체 생성<br>
+>  * $() 함수의 매개 변수에 HTML 형식의 문자열을 입력<br>
+> 7. 이벤트 <br>
+>  * 이벤트 직접 연결<br>
+>  * 이벤트 간접 연결<br>
+>  * 이벤트 제거<br>
+> 8. 애니메이션 <br>
+>  * animate() <br>
+<br>
+- 조금 더 나아가기<br>
+1. 사용할 수 없는 코드<br>
+  * let 키워드와 const 키워드 <br>
+    let variable = 273; -> 최신 버전 자바스크립트 코드<br>
+    const constant = "Hello World"; -> 최신 버전 자바스크립트 코드<br>
+  * 템플릿 문자열 <br>
+    let variable = 273; -> 최신 버전 자바스크립트 코드 <br>
+    console.log(`변수의 값은 ${variable}입니다.`); -> 최신 버전 자바스크립트 코드<br>
+  * 화살표 함수 <br>
+    const functionLiteral = () => {<br>
+<br>
+    };<br>
+  * for of 반복문 <br>
+    const array = ['가', '나', '다'];<br>
+<br>
+    for (let item of array) {<br>
+      console.log(item);<br>
+    }<br>
+  * 사용할 수 없는 메소드를 사용한 코드 <br>
+    const array = [1, 2, 3, 4, 5];<br>
+<br>
+    array.forEach((item, index) => {<br>
+      console.log(`${item}: ${index}`);<br>
+    });<br>
+<br>
+3. window 객체<br>
+  * window 객체 : 웹 페이지 자체를 나타냄 <br>
+  - 새로운 화면을 열거나 웹 브라우저의 크기를 변경하는 등의 일<br>
+  - 대표적으로 경고 출력을 하는 경고창과 입력을 하는 프롬프트를 제공함<br>
+  * 경고 함수와 입력 함수<br>
+    alert(<메시지>) -> 경고창을 출력합니다.<br> 
+    prompt(<메시지>.<임시 글자>) -> 프롬프트를 출력합니다.<br>
+4. screen 객체 <br>
+  * screen 객체의 속성<br>
+    width -> 화면의 너비<br>
+    height -> 화면의 높이<br>
+    availWidth -> 실제 화면에서 사용 가능한 너비<br>
+    availHeight -> 실제 화면에서 사용 가능한 높이 <br>
+    colorDepth -> 사용 가능한 색상 수<br>
+    pixelDepth -> 한 픽셀당 비트 수<br>
+5. location 객체와 history 객체 <br>
+  * location 객체의 속성<br>
+    href -> 문서의 URL 주소 <br>
+    host  -> 호스트 이름과 포트 번호<br>
+    hostname -> 호스트 이름<br>
+    port -> 포트 번호<br>
+    pathname -> 디렉터리 경로 <br>
+    hash -> 앵커 이름 <br>
+    search -> 요청 매개 변수<br>
+    protocol -> 프로토콜 종류<br>
+  * location 객체의 메소드<br>
+    assign(<링크>) -> 매개 변수로 전달한 위치로 이동합니다.<br>
+    reload() -> 새로고침합니다.<br>
+    replace() -> 매개 변수로 전달한 위치로 이동합니다(뒤로 가기 불가능.)<br>
+  * history 객체의 메소드<br>
+    forward() -> 앞으로 이동합니다.<br>
+    back() -> 뒤로 이동합니다.<br>
+6. navigator 객체<br>
+  * navigator 객체의 속성<br>
+    appCodeName -> 웹 브라우저의 코드 이름<br>
+    appName -> 웹 브라우저의 이름 <br>
+    appVersion -> 웹 브라우저의 버전<br>
+    platform -> 사용 중인 운영체제의 시스템 환경 <br>
+    userAgent -> 웹 브라우저의 전체적인 정보 <br>
+<br>
+1. 문서 객체 모델 관련 용어 <br>
+  * 문서 객체 모델 
+    - 넓은 의미 : 웹 브라우저가 HTML 페이지를 인식하는 방법<br>
+    - 좁은 의미 : document 객체와 관련된 객체의 집합을 나타냄 <br>
+  * 문서 객체 : HTML 태그를 자바스크립트에서 사용할 수 있는 객체로 만듬<br>
+    - 문서 객체를 조작한다는 말은 태그를 조작한다는 말과 같음<br>
+    - 노드 : 각 요소 <br>
+           - 요소 노드 : h1 태그와 script 태그처럼 요소를 생성하는 노드<br>
+           - 텍스트 노드 : 화면에 출력되는 문자열인 Lorem ipsum dolor amet 등 <br>    
+  * '정적으로 문서 객체를 생성한다'<br>
+    - 웹 페이지를 처음 실행할 때 HTML 페이지에 있는 태그를 읽으면서 생성하는 것<br>
+  * '동적으로 문서 객체를 생성한다'<br>
+    - 자바스크립트를 사용해 프로그램 실행 중에 문서 객체를 생성하는 것 <br>
+2. 웹 페이지 생성 순서<br>
+  * script 태그를 아래에 삽입하면 HTML 표준에 어긋나며 HTML 페이지의 규모가 클 때 유지 보수가 어려움 -> 이벤트 기능 사용<br>
+3. 문서 객체 선택<br>
+  * 문서 객체 선택 <br>
+    - HTML 태그를 자바스크립트에서 문서 객체로 변환<br>
+    - 문서 객체를 선택하면 자바스크립트로 실행 중에 내부 글자를 변경하거나 스타일을 변경할 수 있음<br>
+  * 1개의 문서 객체를 선택하는 메소드<br>
+    - document.getElemntByid(아이디) -> 아이디를 사용해 문서 객체를 선택합니다. <br>
+    - document.querySelector(선택자) -> 선택자를 사용해 문서 객체를 선택합니다.<br>
+3. 문서 객체 선택<br>
+  * 여러 개의 문서 객체 선택 <br>
+    - 여러 개의 문서 객체를 선택하는 메소드 <br>
+      document.getElementsByName(이름) -> name 속성으로 여러 개의 문서 객체를 선택합니다. <br>
+      document.getElementsByClassName(클래스) -> class 속성으로 여러개의 문서 객체를 선택합니다. <br>
+      document.querySelectorAll(선택자) -> 선택자로 여러 개의 문서 객체를 선택합니다. <br>
+4. 문서 객체 조작<br>
+  * 문자 조작 <br>
+    - 글자를 조작하는 속성<br>
+      innerHTML -> 문서 객체 내부의 글자를 나타냅니다.<br>
+  * 스타일 조작 <br>
+    - 스타일시트의 스타일 속성과 자바스크립트의 스타일 속성 차이<br>
+      background-color -> backgroundColcor<br>
+      border-radius -> borderRadius<br>
+      border-bottom -> bottomBottom<br>
+  * 속성 조작<br>
+    - 문서 객체의 속성 조작 메소드<br>
+      setAttibute(속성 이름, 속성 값) -> 속성을 지정합니다.<br>
+      getAttribute(속성 이름) -> 속성을 추출합니다.<br>
+5. 이벤트 <br>
+  * 이벤트 관련 용어 정리 <br>
+    - 이벤트 속성 : onload <br>
+    - 이벤트 이름, 이벤트 타입 : load<br>
+    - 이벤트 리스너, 이벤트 핸들러 : 이벤트 속성에 넣는 함수<br>
+    - 이벤트 모델 : 문서 객체에 이벤트를 연결하는 방법<br>
+  * 인라인 이벤트 모델 <br>
+    - HTML 태그 내부에서 이벤트를 연결하는 방법<br>
+  * 고전 이벤트 모델 <br>
+    var image = document.getElemntByid('image');<br>
+    image.width = 100;<br>
+    image.height = 100;<br>
+  * 이벤트 객체 <br>
+  * 기본 이벤트 제거<br>
+<br>
+1. jQuery 사용 준비 <br>
+  * 각 페이지에 접속하면 jQuery 파일과 관련된 경로가 나옴<br>
+2. jQuery 객체<br>
+  * jQuery 라이브러리는 $ 함수 활용 <br>
+  * $ 함수의 매개 변수에는 문서 객체, CSS 형식, HTML 형식의 문자열 삽입 <br>
+  * jQuery 기본 사용 형태 <br>
+    window.jQuery = window.$ = jQuery;<br>
+  * jQuery 객체생성<br>
+    // 일반 문서 객체로 jQuery 객체를 생성합니다.<br>
+    $(document)<br>
+<br>
+    // CSS 선택자로 jQuery 객체를 생성합니다. <br>
+    $('h1')<br>
+<br>
+    //HTML 문자열로 jQuery 객체를 생성합니다. <br>
+    $('<h1></h1>')<br>
+3. 문서 객체 선택<br>
+  * CSS 선택자를 사용해 문서 객체를 선택<br>
+    // h1 태그를 선택합니다.<br>
+      $('h1')<br>
+<br>
+    // h1 태그 중에 class 속성으로 logo를 가진 태그를 선택합니다.<br>
+      $('h1.logo')<br>
+<br>
+    // id 속성이 head인 태그를 선택합니다.<br>
+      $('#head')<br>
+<br>
+    // input 태그 중에 type 속성이 submit인 태그를 선택합니다.<br>
+      $('input[type=submit]')<br>
+  * 객체 탐색 메소드 <br>
+    parent() -> 부모 태그를 선택합니다. <br>
+    find() -> 후손 태그를 찾습니다.<br>
+4. 문서 객체 개별 조작 <br>
+  * 선택된 문서 객체의 수 <br>
+    length -> 선택된 문서 객체의 수를 구합니다.<br>
+  * 선택된 문서 객체 추출<br>
+    get() -> 선택한 문서 객체 중 하나를 선택합니다.<br>
+  * each() 메소드 <br>
+    - 선택된 문서 객체 반복 적용<br>
+      each() -> 선택한 문서 객체에 반복을 적용합니다.<br>
+    - each() 메소드의 콜백 함수<br>
+      [].forEach (function (item.index) {<br>
+<br>
+      });<br>
+<br>
+5. 문서 객체 조작 <br>
+  * 문자 조작 <br>
+    - 문자 조작 메소드 <br>
+      text() -> html 태그 내부의 문자를 조작합니다.<br>
+      html() -> html 태그 내부의 문자를 조작합니다(HTML 태그 인식)<br>
+    - 선택자로 여러 개의 문서 객체를 선택할 때 text () 메소드는 모든 문서 객체 내부의 문자를 출력, html() 메소드는 첫 번째 문서 객체 내부의 문자를 출력<br>
+  * 스타일 조작 <br>
+    - css() <br>
+    - 스타일 조작 메소드 <br>
+      css() -> 스타일을 조작합니다.<br>
+      // h1 태그의 color 스타일 속성을 가져옵니다.<br>
+      $('h1').css('color')<br>
+<br>
+      // h1 태그의 color 스타일 속성을 red로 설정합니다.<br>
+      $('h1').css('color','red')<br>
+<br>
+      // h1 태그의 color 스타일 속성과 backgroundColor 스타일 속성을 한꺼번에 설정합니다.<br>
+      $('h1').css({<br>
+        color: 'red',<br>
+        backgroundColor: 'orange'<br>
+      })<br>
+  * 속성 조작 <br>
+    - attr() <br>
+    - 속성 조작 메소드 <br>
+      attr() -> 속성을 조작합니다.<br>
+      // img 태그의 src 속성을 가져옵니다.<br>
+      $('img').attr('src')<br>
+<br>
+      // img 태그의 src 속성을 http://placehold.it/100x100으로 설정합니다.<br>
+      $('img').css('src', 'http://placehold.it/100x100')<br>
+<br>
+      // img태그의 src 속성과 alt 속성을 한꺼번에 지정합니다.<br>
+      $('img').css({<br>
+        src: 'http://placehold.it/100x100',<br>
+        alt: 'placehold.it'<br>
+      })<br>
+<br>
+6. 문서 객체 생성<br>
+  * $() 함수의 매개 변수에 HTML 형식의 문자열을 입력<br>
+    $('<h1></h1>')<br>
+7. 이벤트 <br>
+  * jQuery의 이벤트 메소드<br>
+    on() -> 이벤트를 연결합니다.<br>
+    off() -> 이벤트를 제거합니다.<br>
+  * 이벤트 직접 연결<br>
+   - 특정 태그에 이벤트를 연결하고, 특정 태그를 눌렀을 때 이벤트가 발생<br>
+   - jQuery로 이벤트를 직접 연결할 때느 on() 메소드 사용<br>
+   - 기본 형태 <br>
+     $(<선택자>).on(<이벤트 이름>, <콜백 함수>)<br>
+  * 키보드 이벤트<br>
+    keydown() -> 키보드 키를 눌렀을 때<br>
+    keypress() -> 키가 입력되었을 때 <br>
+    keyup() -> 키보드 키를 떼었을 때<br>
+  * 마우스 이벤트 <br>
+    click() -> 마우스를 클릭했을 때 <br>
+    dbclick() -> 마우스를 더블 클릭했을 때 <br>
+    mousedown() -> 마우스 버튼을 눌렀을 때<br>
+    mouseenter() -> 마우스 커서가 해당 태그로 들어갔을 때 <br>
+    mouseleave() -> 마우스 커서가 해당 태그에서 나갔을 때 <br>
+    mousemove() -> 마우스가 움직일 때 <br>
+    mouseup() -> 마우스 버튼을 뗄 때<br>
+  * 웹 브라우저 이벤트 <br>
+    resize() -> 웹 브라우저의 크기를 변경할 때<br>
+    scroll() -> 웹 브라우저를 스크롤할 때<br>
+  * 이벤트 간접 연결<br>
+    - 부모에게 이벤트를 위임해서 부모가 이벤트를 처리하게 하는 것<br>
+    - h1 태그의 부모인 body 태그에 이벤트를 연결할 것임<br>
+    -'body 태그 내부에서 h1 태그를 클릭했을 때'를 구현 가능함<br>
+  * 이벤트 제거<br>
+    off() 메소드 사용<br>
+  * 이벤트를 한 번만 연결하는 메소드<br>
+    one() -> 이벤트를 한 번만 연결합니다.<br>
+8. 애니메이션<br>
+  * animate()<br>
+  * 애니메이션 메소드<br>
+    animate() -> 애니메이션을 적용합니다.<br>
+    스타일에 적용<br>
+    숫자를 적용할 수 있는 모든 속성에 animate() 메소드 사용 가능<br>
+    콜백 함수는 애니메이션이 종료되었을 때 호출, 생략 가능함<br>
+    
 ## [05월 25일]
 > 오늘 배운 내용 요약  <br />
 > 1.요청과 응답<br>
